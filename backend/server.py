@@ -4,6 +4,7 @@ import folium
 from ultralytics import YOLO
 import cv2
 import numpy as np
+import os
 
 model = YOLO("runs/detect/train10/weights/best_finetuned.pt")
 
@@ -414,4 +415,8 @@ def auto_repair_check():
 
 if __name__ == "__main__":
 
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run(
+      host="0.0.0.0",
+      port=int(os.environ.get("PORT", 5000))
+    )
